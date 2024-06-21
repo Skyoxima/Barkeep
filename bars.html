@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barkeep</title>
+    <link rel="stylesheet" href="bars.css">
+  </head>
+
+  <body>
+    <section>
+      <div id="landing-container">
+        <p id="landing-title">Barkeep</p>
+        <p id="landing-subtitle">Create your own Bar Graph!</p>
+        <a id="start-btn" style="--clr: #fafafa;" onclick="scrollToCanvas(event)"><span>Create!</span><i></i></a>
+      </div>
+      <div id="circles">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </section>
+
+    <section id="canvas-section">
+      <div class="info-text">
+        <h2 class="info-title">Instructions</h2>
+        <ul type="disc">
+          <li>This is a bar-graph creation web-app, intended for simple visuals.</li>
+          <li>Use <b>Add Bar</b> to insert a bar on the canvas. Inside the pop-up, the bar can be labelled as per requirement using <b>Bar Label</b>, bar width is set based on <b>Value</b> and a custom color can be selected using the color range in <b>Pick Color</b>.</li>
+          <li><b>Remove All</b> clears the canvas completely (no undo feature yet, use it carefully).</li>
+          <li><b>Save Bars</b> will download the current bars on the canvas as a JSON for further usage.</li>
+          <li><b>Load Bars</b> loads valid JSONs as Bars on the canvas.</li>
+        </ul>
+      </div>
+
+      <div id="main" class="container">
+        <div class="axes">
+          <div class="x-axis">
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+            <span class="x-ticks half-tick"></span>
+            <span class="x-ticks"></span>
+          </div>
+          <div class="y-axis"></div>
+          <div id="bar-plane">
+            <div class="bar" bar-value="1" bar-number="1" onclick="editBars(event)"><span></span></div>
+          </div>
+        </div>
+      </div>
+      <div id="bar-title-div">
+        <p id="bar-title" contenteditable="true">Personal Stats</p>
+      </div>
+      
+      <div id="controlpanel" class="container">
+        <button id="add-bar-btn">Add Bar</button>
+        <button id="remove-all-bar-btn" onclick = "removeAllBars()">Remove All</button>
+        <a href="" id="save-bars-btn" download>Save Bars</a>
+        <button id="load-bars-btn" onclick="invokeFileUpload()">Load Bars</button>
+        <input type="file" id="load-bars-file" accept=".json"/>
+      </div>
+    </section>
+
+    <div class="blocker">
+      <div class="pop-up add-bar-pu">
+        <p class="header">Add a Bar</p>
+        <div class="pop-up-txt-input"><label for="sf">Bar Label:</label><input type="text" name="sf" id="new-bar-label" /></div>
+        <div class="pop-up-sub-div">
+          <div class="pop-up-txt-input"><label for="val">Value:</label><input type="text" name="val" id="new-bar-val" /></div>
+          <div class="add-bar-color"><label for="barcolor">Pick Color:</label><input type="color" value="#ffc0cb" name="barcolor" id="bar-color-picker" /></div>
+        </div>
+        <button id="pop-up-submit" disabled>Add!</button>
+        <button id="pop-up-cancel">Cancel</button>
+      </div>
+    </div>
+    
+    <div id="edit-bar-tooltip">
+      <p id="edit-header">Edit Bar</p>
+      <input type="text" name="change-label" id="change-label" placeholder="Label (use '-' to clear)"/>
+      <div class="sub-div-1">
+        <input title="Change Color" type="color" name="edit-color-swatch" id="edit-color-swatch" value="#f0a8f9"/>
+        <i title="Delete Bar" class="fa-solid fa-trash fa-lg" id="delete-bar"></i>
+      </div>
+      <div class="sub-div-2">
+        <i title="Confirm Changes" class="fa-solid fa-check fa-lg" id="confirm-edit"></i>
+        <i title="Cancel Changes" class="fa-sharp fa-solid fa-xmark fa-lg" id="close-edit"></i>
+      </div>
+    </div>
+
+    <div id="info-button" class="info-btn" onclick="unhideInfo(event)"><i class="fa-sharp fa-solid fa-info fa-2x"></i></div>    
+
+    <script src="https://kit.fontawesome.com/459235f77f.js" crossorigin="anonymous"></script>
+    <script src="bars.js"></script>
+    <script>
+      function scrollToCanvas(e) {
+        const y = window.innerHeight;
+        window.scroll({
+          top: y,
+          behavior: 'smooth'
+        });
+      }
+
+      function invokeFileUpload() {
+        fileUploadTag = document.getElementById('load-bars-file');
+        fileUploadTag.click();        // invokes a click on the almost non-existing file tag, make the upload box appear
+      }
+
+      function unhideInfo(e) {
+        document.querySelector("#edit-bar-tooltip").classList.remove("active-tooltip");
+        e.target.firstChild.classList.toggle("active");
+        infoTxt = document.querySelector(".info-text");
+        infoTxt.classList.toggle("active-text");
+        if(infoTxt.classList.contains("active-text"))
+          infoTxt.style.height = `${parseFloat(window.getComputedStyle(document.querySelector(".info-text ul")).getPropertyValue("height")) + 40}px`;
+        else
+          infoTxt.style.height = 0;
+      }
+    </script>
+  </body>
+</html>
+
+<!-- Todo (Possible and probable)
+Custom Title for the Bar graph
+Confirmation for remove all, saving and loading
+Add option to change label color as well, and by default it can either be gray or match the bar color, give a checkbox for this
+Make the bars as range inputs themselves or atleast resizable with snapping - too complicated, but try -> Maybe use onmousemove on the divs, no need for resizes
+re-arrange bars order - hard
+multi-partitions in the bars, joint bars
+-->

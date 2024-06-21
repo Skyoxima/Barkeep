@@ -1,0 +1,667 @@
+:root {
+  --tick-text: '0';
+  --tick-text-color: rgb(206, 0, 0);
+  --stands-for-text: 'Stands For?';
+  --stands-for-color: grey;
+  --bar-index-left: -24px;
+}
+
+* {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(45deg, rgb(183, 228, 255), pink);
+}
+
+#landing-container {
+  max-width: 100vw;
+  height: 100vh;
+  background: rgb(17, 17, 17);
+  display: flex; justify-content: center; align-items: center; flex-direction: column;
+  color: white;
+}
+
+#landing-title {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  text-align: center;
+  font-size: 6em;
+  font-weight: 600;
+}
+
+#start-btn {
+  margin-top: 2em;
+  position: relative;
+  padding: 15px 45px;
+  
+  background-color: rgb(55, 55, 55);
+  color: white;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  transition: .25s;
+  cursor: pointer;
+}
+
+#start-btn span {
+  position: relative;
+  z-index: 1;
+  margin-right: -10px;
+}
+
+#start-btn:hover {
+  letter-spacing: 20px;
+  color: var(--clr);
+  background: linear-gradient(45deg, rgb(183, 228, 255), pink);
+  /* background-color: var(--clr); */
+  box-shadow: 0 0 1em var(--clr);
+}
+
+#start-btn:hover span {
+  margin-right: -20px;
+}
+
+#start-btn::before {
+  content: '';
+  position: absolute;
+  background-color: rgb(18, 18, 18);
+  inset: 2px;
+}
+
+#start-btn i {
+  position: absolute;
+  inset: 0;
+}
+
+#start-btn i::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: 100%;
+  width: 20px; height: 20px;
+  
+  transform: translateX(-50%);
+
+  background-color: rgb(35, 35, 35);
+  border: 2px solid var(--clr);
+
+  transition: .5s;
+}
+
+#start-btn:hover i::before {
+  left: 0%;
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: 37px 37px var(--clr);
+}
+
+#start-btn i::after {
+  content: '';
+  position: absolute;
+  bottom: -11px; left: 0%;
+  width: 20px; height: 20px;
+  
+  transform: translateX(-50%);
+  
+  background-color: rgb(35, 35, 35);
+  border: 2px solid var(--clr);
+  
+  transition: .5s;
+}
+
+#start-btn:hover i::after {
+  left: 100%;
+  transform: translateX(-50%) rotate(-45deg);
+  box-shadow: 37px -37px var(--clr);
+}
+
+#start-btn:active {
+  scale: .9;
+}
+
+/*======================= The Objects Animation =======================  */
+#circles {
+  position: absolute;
+  top: 0; left: 50%;
+  translate: -50% 0;
+  width: 98vw;
+  height: 100vh;
+  overflow-y: hidden;
+  pointer-events: none;
+}
+
+@keyframes square-to-circle {
+  0% {
+    opacity: 1;
+    border-radius: 0;
+    translate: 0 0;
+    rotate: 0deg;
+  } 100% {
+    opacity: 0;
+    border-radius: 50%;
+    transform: translateY(-66vh) rotate(720deg);
+  }
+}
+
+#circles div {
+  position: absolute;
+  bottom: -16vh;
+  width: 20px; height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  filter: blur(5px);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  animation: square-to-circle 15s linear infinite forwards;
+
+}
+
+#circles div:nth-child(1) {
+  width: 80px; height: 80px;
+  left: 25%;
+  animation-delay: 0s;
+}
+#circles div:nth-child(2) {
+  left: 10%;
+  width: 20px; height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+#circles div:nth-child(3) {
+  left: 70%;
+  width: 20px; height: 20px;
+  animation-delay: 4s;
+}
+#circles div:nth-child(4) {
+  left: 40%;
+  width: 60px; height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+#circles div:nth-child(5) {
+  left: 65%;
+  width: 20px; height: 20px;
+  animation-delay: 0s;
+}
+#circles div:nth-child(6) {
+  left: 75%;
+  width: 110px; height: 110px;
+  animation-delay: 3s;
+}
+#circles div:nth-child(7) {
+  left: 35%;
+  width: 150px; height: 150px;
+  animation-delay: 7s;
+}
+#circles div:nth-child(8) {
+  left: 50%;
+  width: 25px; height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+#circles div:nth-child(9) {
+  left: 20%;
+  width: 15px; height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+#circles div:nth-child(10) {
+  left: 85%;
+  width: 150px; height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+#canvas-section {
+  max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+  border: 2px solid white;
+  transition: background .5s, box-shadow .5s;
+  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.35);
+}
+
+.container:hover {
+  background: white;
+  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.45);
+}
+
+/*======================= The Main Panel =======================  */
+#main {
+  position: relative;
+  width: 60%; height: 700px;
+  /* mentioning height to be 700px is what enables me to handle the overflow, otherwise the div would've simply expanded */
+  overflow: hidden;
+  z-index: 1;
+  overflow-y: scroll;
+}
+
+#main::-webkit-scrollbar {
+  display: none;
+}
+
+#main .axes {
+  position: relative;
+  width: 100%; min-height: 100%;
+}
+
+#main .axes .x-axis {
+  position: relative;
+  width: 100%; height: 2px;
+  top: 20px;
+  border-top: 2px solid grey;
+}
+
+/* JS is used to position the ticks at fixed intervals */
+#main .axes .x-axis .x-ticks {
+  position: absolute;
+  transform: translate(-30%, -60%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: grey;
+}
+#main .axes .x-axis .x-ticks::before {
+  content: var(--tick-text);
+  position: absolute;
+  translate: 8px -20px;
+  color: var(--tick-text-color);
+}
+
+#main .axes .x-axis .x-ticks.half-tick {
+  width: 2px; height: 10px;
+  border-radius: 0;
+}
+#main .axes .x-axis .x-ticks.half-tick::before {
+  content: "";
+}
+
+#main .axes .y-axis {
+  position: absolute;
+  left: 1.75%;
+  width: 2px; min-height: 100%;
+  border-left: 2px solid grey;
+}
+
+#main #bar-plane {
+  position: relative;
+  width: 100%; height: 100%;
+  top: 20px; left: 1.75%;
+}
+
+#main #bar-plane .bar {
+  position: relative;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  width: 48.25%; height: 40px;              /* left(1.75%, of the x-plane as a whole) */
+  background: pink;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-left: 2px solid grey;
+  transition: width 0.5s, background-color 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+  box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.2);
+}
+
+#main #bar-plane .bar::before {
+  content: attr(bar-number);
+  position: absolute;
+  width: 20px;
+  left: var(--bar-index-left); top: 18%;
+  display: flex; justify-content: center; align-items: center;
+}
+
+#main #bar-plane .bar::after {
+  content: var(--stands-for-text);
+  position: absolute;
+  left: 8px; top: 100%;
+  font-style: italic;
+  color: var(--stands-for-color);
+}
+
+#main #bar-plane .bar span {
+  position: absolute;
+  top: 50%; right: -1rem;
+  translate: 0 -50%;
+}
+
+/*======================= The Bar Title Element =======================  */
+#bar-title-div {
+  position: relative;
+  width: 325px; height: 40px;
+  
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.35);
+  border: 2px solid white;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  z-index: 0;
+  transition: background .5s, box-shadow .5s;
+}
+
+#bar-title-div:hover {
+  background: white;
+  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.45);
+}
+
+#bar-title-div::before {
+  content: '';
+  position: absolute;
+  left: -8.75px; top: 0;
+  width: 7px; height: 7px;
+  border-radius: 0 20px 0 0;
+  box-shadow: 2px -2px 0 white;
+  background: transparent;
+}
+
+#bar-title-div::after {
+  content: '';
+  position: absolute;
+  right: -8.75px; top: 0;
+  width: 7px; height: 7px;
+  border-radius: 20px 0 0 0;
+  box-shadow: -2px -2px 0 white;
+  background: transparent;
+}
+
+#bar-title-div #bar-title {
+  position: absolute;
+  top: 50%; left: 50%;
+  /* translate: -50% -50%; */
+  transform: translate(-50%, -50%);
+  outline: none;
+}
+
+#bar-title-div #bar-title:focus {
+  padding: 1px 5px;
+  border-bottom: 1px solid black;
+  border-radius: 10px;
+}
+
+/*======================= The Bottom Panel =======================  */
+#controlpanel {
+  width: 80%;
+  padding: 10px;
+  display: flex; justify-content: center;
+  margin-top: 45px;
+}
+
+#controlpanel button,
+#controlpanel a {
+  margin-right: 30px;
+  width: 120px; height: 60px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid white;
+  text-align: center;
+  font-size: 1.1em;
+  transition: scale .5s, box-shadow .5s;
+  cursor: pointer;
+}
+
+#controlpanel a { 
+  display: flex; justify-content: center; align-items: center;
+  text-decoration: none; 
+  color: black;  
+}
+
+#controlpanel:hover button, 
+#controlpanel:hover a {
+  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.45);
+}
+
+#controlpanel button:active,
+#controlpanel a:active {
+  scale: 0.90;
+}
+
+#controlpanel #load-bars-file {
+  display: none;
+}
+
+/*======================= The Blocker and Pop-up Window =======================  */
+.blocker {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgb(0, 0, 0, 0.2);
+  display: none;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+}
+
+.blocker .pop-up {
+  position: absolute;
+  width: 500px; height: 300px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 25px;
+  border: 2px solid white;
+  
+  /* scale: 0; */
+  transition: scale 5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.blocker .pop-up.add-bar-pu {
+  display: none;
+}
+
+/* ====================================================== Common to all pop-ups ====================================================== */
+.blocker .pop-up .header {
+  margin: 10px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.blocker .pop-up .pop-up-txt-input {
+  padding: 15px;
+  display: flex; justify-content: start; align-items: center;
+}
+
+.blocker .pop-up label {
+  font-size: 1.5em;
+  padding-right: 12px;
+  color: #363636;
+}
+
+.blocker .pop-up input[type=text] {
+  outline: none; border: none;
+  padding: 4px;
+  font-size: 18px;
+  border-radius: 10px;
+  border-bottom: 2px solid #ffc0cb;
+  color: grey;
+}
+
+.blocker .pop-up .pop-up-sub-div {
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.blocker .pop-up .pop-up-sub-div .pop-up-txt-input  {
+  width: 40%;
+}
+
+.blocker .pop-up .pop-up-sub-div .pop-up-txt-input input {
+  width: 30%;
+}
+
+.blocker .pop-up button {
+  position: absolute;
+  top: 85%; 
+  width: 120px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 24px;
+  transition: scale 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* ====================================================== Specific to Add Bar Pop-up ====================================================== */
+.blocker .pop-up .pop-up-sub-div .add-bar-color {
+  width: 60%;
+  display: flex; justify-content: start; align-items: center;
+}
+
+.blocker .pop-up .pop-up-sub-div .add-bar-color input { 
+  width: 120px;
+  background: 
+    linear-gradient(to right, #12c2e9, #c471ed, #f64f59) padding-box,
+    linear-gradient(to right, #12c2e9, #c471ed, #f64f59) border-box;
+  border: none;
+  border-radius: 20px;
+}
+.blocker .pop-up .pop-up-sub-div .add-bar-color input::-webkit-color-swatch {
+  box-shadow: 0 0 2px 1px white;
+  border: none;
+  border-radius: 20px;
+}
+
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-submit {
+  right: 4%;
+  background: pink;
+}
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-submit:disabled {
+  background: grey;
+}
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-submit:active,
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-cancel:active {
+  scale: 0.90;
+}
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-cancel {
+  right: 30%;
+  background: rgb(183, 228, 255);
+}
+
+/* ====================================================== Tooltip for editing a bar ====================================================== */
+#edit-bar-tooltip {
+  position: absolute;
+  top: 0; left: 0;
+  display: flex; flex-direction: column; gap: 15px;
+  padding: 10px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid white;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), left 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 100;
+}
+#edit-bar-tooltip.active-tooltip {
+  opacity: 1;
+}
+
+#edit-bar-tooltip #edit-header {
+  border: 1px solid rgba(180, 180, 180, 0.5);
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: grey;
+}
+
+#edit-bar-tooltip .sub-div-1 {
+  display: flex; align-items: center; justify-content: start; gap: 10px;
+}
+
+#edit-bar-tooltip #edit-color-swatch {
+  width: 2em;
+  border: none; outline: none;
+  border-radius: 10px;
+}
+#edit-bar-tooltip #edit-color-swatch::-webkit-color-swatch {
+  box-shadow: 0 0 2px 1px white;
+  border: none;
+  border-radius: 10px;
+}
+
+#edit-bar-tooltip #delete-bar {
+  color: darkslategray;
+}
+
+#edit-bar-tooltip #change-label {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid pink;
+}
+
+#edit-bar-tooltip .sub-div-2 {
+  display: flex; justify-content: end; align-items: center; gap: 10px;
+}
+
+#edit-bar-tooltip #confirm-edit {
+  color: green;
+  transition: scale 0.5s;
+}
+
+#edit-bar-tooltip #close-edit {
+  top: 12px; left: 87.5%;
+  color: maroon;
+  transition: scale 0.5s;
+}
+
+.fa-solid:active {
+  scale: 0.7;
+}
+
+/* ====================================================== info div ====================================================== */
+.info-btn {
+  width: 3.5rem; height: 3.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+
+#info-button {
+  position: absolute;
+  left: 96%; top: 102%;
+}
+
+.info-btn i { 
+  position: absolute;
+  top: 50%; left: 50%;
+  translate: -50% -50%;
+  color: grey;
+  pointer-events: none;
+  transition: scale 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#info-button i.active {
+  scale: 0.8;
+}
+
+.info-text {
+  position: relative;
+  translate: 0 -100%;
+  background: white;
+  color: grey;
+  font-size: 1.2em;
+  opacity: 0;
+  height: 0;
+  transition: height 0.5s, translate 0.5s, opacity 0.5s;
+  transition-delay: 0s, 0s, 0s;
+  pointer-events: none;
+}
+.info-text.active-text {
+  translate: 0;
+  opacity: 1;
+  transition-delay: 0s, 0s, 0.25s;
+}
+
+.info-text h2 {
+  text-align: center;
+}
+
+.info-text ul {
+  padding: 25px;  
+}
