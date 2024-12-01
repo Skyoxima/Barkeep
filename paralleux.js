@@ -175,6 +175,7 @@ const removeAllBars = () => {
 }
 
 // <========================================= Saving/Downloading Functionality =========================================>
+//! Cancelling still downloads an empty file, fix that.
 (function saveBars() {
 let saveBarsBtn = document.getElementById('save-bars-btn');
 saveBarsBtn.addEventListener("click", () => {

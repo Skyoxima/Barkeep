@@ -134,6 +134,7 @@
 
       function unhideInfo(e) {
         document.querySelector("#edit-bar-tooltip").classList.remove("active-tooltip");
+        e.target.classList.toggle("active");
         e.target.firstChild.classList.toggle("active");
         infoTxt = document.querySelector(".info-text");
         infoTxt.classList.toggle("active-text");
