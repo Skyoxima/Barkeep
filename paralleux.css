@@ -147,7 +147,7 @@ body {
 
 #circles div {
   position: absolute;
-  bottom: -16vh;
+  top: 100vh;
   width: 20px; height: 20px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -212,6 +212,12 @@ body {
   width: 150px; height: 150px;
   animation-delay: 0s;
   animation-duration: 11s;
+}
+#circles div:nth-child(11) {
+  left: 10%;
+  width: 90px; height: 90px;
+  animation-delay: 0s;
+  animation-duration: 16s;
 }
 
 #canvas-section {
