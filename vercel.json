@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/paralleux.html",
+      "permanent": true
+    }
+  ]
+}

@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barkeep</title>
-    <link rel="stylesheet" href="bars.css">
+    <title>Paralleux</title>
+    <link rel="stylesheet" href="paralleux.css">
   </head>
 
   <body>
     <section>
       <div id="landing-container">
-        <p id="landing-title">Barkeep</p>
-        <p id="landing-subtitle">Create your own Bar Graph!</p>
+        <p id="landing-title">Paralleux</p>
+        <p id="landing-subtitle">Create your own parallel Bar graphs!</p>
         <a id="start-btn" style="--clr: #fafafa;" onclick="scrollToCanvas(event)"><span>Create!</span><i></i></a>
       </div>
       <div id="circles">
@@ -103,18 +103,20 @@
       <input type="text" name="change-label" id="change-label" placeholder="Label (use '-' to clear)"/>
       <div class="sub-div-1">
         <input title="Change Color" type="color" name="edit-color-swatch" id="edit-color-swatch" value="#f0a8f9"/>
-        <i title="Delete Bar" class="fa-solid fa-trash fa-lg" id="delete-bar"></i>
       </div>
       <div class="sub-div-2">
-        <i title="Confirm Changes" class="fa-solid fa-check fa-lg" id="confirm-edit"></i>
+        <i title="Delete Bar" class="fa-solid fa-trash fa-lg" id="delete-bar"></i>
+        <button>
+          <i title="Confirm Changes" class="fa-solid fa-check fa-lg" id="confirm-edit"></i>
+        </button>
         <i title="Cancel Changes" class="fa-sharp fa-solid fa-xmark fa-lg" id="close-edit"></i>
       </div>
     </div>
 
-    <div id="info-button" class="info-btn" onclick="unhideInfo(event)"><i class="fa-sharp fa-solid fa-info fa-2x"></i></div>    
+    <div id="info-button" class="info-btn" onclick="unhideInfo(event)" title="Instructions"><i class="fa-sharp fa-solid fa-info fa-2x"></i></div>    
 
     <script src="https://kit.fontawesome.com/459235f77f.js" crossorigin="anonymous"></script>
-    <script src="bars.js"></script>
+    <script src="paralleux.js"></script>
     <script>
       function scrollToCanvas(e) {
         const y = window.innerHeight;
@@ -145,6 +147,10 @@
 
 <!-- Todo (Possible and probable)
 Custom Title for the Bar graph
+  implemented on screen, now it should go to the saved version as well.
+fix the tooltip style, change the icons into buttons
+tutorial mode instead of a dropdown for instructions (make it so that it asks on first landing too... or on every landing (cause I don't know how to check first landing))
+Make the values go upto 2 decimals, not just whole and .5
 Confirmation for remove all, saving and loading
 Add option to change label color as well, and by default it can either be gray or match the bar color, give a checkbox for this
 Make the bars as range inputs themselves or atleast resizable with snapping - too complicated, but try -> Maybe use onmousemove on the divs, no need for resizes
