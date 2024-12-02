@@ -512,6 +512,7 @@ I presume it was because of border-left being 2px and y-axis being a copied rota
   color: white;
   font-size: 24px;
   transition: scale 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
 }
 
 /* ====================================================== Specific to Add Bar Pop-up ====================================================== */
@@ -520,7 +521,7 @@ I presume it was because of border-left being 2px and y-axis being a copied rota
   display: flex; justify-content: start; align-items: center;
 }
 
-.blocker .pop-up .pop-up-sub-div .add-bar-color input { 
+.blocker .pop-up .pop-up-sub-div .add-bar-color input[type="color"] { 
   width: 120px;
   background: 
     linear-gradient(to right, #12c2e9, #c471ed, #f64f59) padding-box,

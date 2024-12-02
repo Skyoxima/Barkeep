@@ -78,8 +78,8 @@
       </div>
       
       <div id="controlpanel" class="container">
-        <button id="add-bar-btn">Add Bar</button>
-        <button id="remove-all-bar-btn" onclick = "removeAllBars()">Remove All</button>
+        <button id="add-bar-btn" onclick="addBar()">Add Bar</button>
+        <button id="remove-all-bar-btn" onclick="removeAllBars()">Remove All</button>
         <a href="" id="save-bars-btn" download>Save Bars</a>
         <button id="load-bars-btn" onclick="invokeFileUpload()">Load Bars</button>
         <input type="file" id="load-bars-file" accept=".json"/>
@@ -117,6 +117,7 @@
     <div id="info-button" class="info-btn" onclick="unhideInfo(event)" title="Instructions"><i class="fa-sharp fa-solid fa-info fa-2x"></i></div>    
 
     <script src="https://kit.fontawesome.com/459235f77f.js" crossorigin="anonymous"></script>
+    <script src="addBar.js" type="module"></script>
     <script src="paralleux.js"></script>
     <script>
       function scrollToCanvas(e) {
