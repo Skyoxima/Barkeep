@@ -30,6 +30,7 @@ body {
   text-align: center;
   font-size: 6em;
   font-weight: 600;
+  letter-spacing: 10px;
 }
 
 #start-btn {
@@ -294,9 +295,11 @@ body {
 #main .axes .y-axis {
   position: absolute;
   left: 1.75%;
-  width: 2px; min-height: 100%;
+  width: 2px; min-height: calc(100% - 2px);
   border-left: 2px solid grey;
 }
+/* That -2px in height is for solving the scroll issue on the initial board, now it doesn't have a scroll, 
+I presume it was because of border-left being 2px and y-axis being a copied rotated x-axis */
 
 #main #bar-plane {
   position: relative;

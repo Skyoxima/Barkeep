@@ -3,6 +3,8 @@
   xTicks = document.querySelectorAll(".x-ticks");
 
   for(let i = 0; i < xTicks.length; i++) {
+    console.log(1.75 + 4.75 * i);
+    
     xTicks[i].style.left = `${1.75 + 4.75 * i}%`;
     xTicks[i].style.setProperty("--tick-text", `'${i / 2}'`);
     if(i / 2 > 6)
@@ -23,6 +25,9 @@
       //. * 2 makes the value correctly correspond to its index
       
       // keeps the bar index on within the y-axis - offsetLeft gives position relative to the parent which is what I wanted for 0th x-tick
+      for(xTick of xTicks) {
+        console.log(xTick.offsetLeft);
+      }
       if(i < 9)
         barDivs[i].style.setProperty("--bar-index-left", `${-(xTicks[0].offsetLeft + 5)}px`);
       if(i >= 9)
