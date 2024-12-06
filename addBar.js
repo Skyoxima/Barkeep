@@ -1,5 +1,3 @@
-import { editBars } from './editBars.js';
-
 function addBar() {
   const xTicksSpans = document.querySelectorAll('.x-ticks'),
         zXTickPsn = xTicksSpans[0].getBoundingClientRect(),          // z ~ zero-th
@@ -7,7 +5,6 @@ function addBar() {
         blockerDiv = document.querySelector('.blocker'),
         addBarPopUp = document.querySelector('.add-bar-pu'),
         barPlaneDiv = document.querySelector('#bar-plane'),
-        addBarBtn = document.getElementById('add-bar-btn'),
         newBarVal = document.getElementById("new-bar-val"),
         newBarLabel = document.getElementById("new-bar-label"),
         newBarColor = document.getElementById("bar-color-picker"),
@@ -15,12 +12,18 @@ function addBar() {
         popUpCancelBtn = document.getElementById("pop-up-cancel");
   
   // Entering the pop-up by using the button on the Control Panel
-  addBarBtn.onclick = () => {
-    document.querySelector("#edit-bar-tooltip").classList.remove("active-tooltip");
-    popUpSubmitBtn.disabled = true;
-    addBarPopUp.style.display = 'block';
-    blockerDiv.style.display = 'block';
-  }
+  // addBarBtn.onclick = () => {
+  //   document.querySelector("#edit-bar-tooltip").classList.remove("active-tooltip");
+  //   popUpSubmitBtn.disabled = true;
+  //   addBarPopUp.style.display = 'block';
+  //   blockerDiv.style.display = 'block';
+  // }
+  
+  // Cleanup the screen first
+  document.querySelector("#edit-bar-tooltip").classList.remove("active-tooltip");
+  popUpSubmitBtn.disabled = true;
+  addBarPopUp.style.display = 'block';
+  blockerDiv.style.display = 'block';
   
   // live validation of inputted values for the new bar
   newBarVal.oninput = () => {
@@ -62,7 +65,7 @@ function addBar() {
         easing: "ease-out"
       }
     );
-    barPlaneDiv.lastChild.addEventListener("click", editBars);      // for editing tool tip
+    // barPlaneDiv.lastChild.addEventListener("click", editBars);      // for editing tool tip
     yAxisBarIndxAndVal();
     
     // reset the pop-up field before finalising the submit, keeps it ready for next new bars
@@ -77,4 +80,6 @@ function addBar() {
     addBarPopUp.style.display = 'none';
     blockerDiv.style.display = 'none';
   }
-}; //IIFE (Immediately Invoked Function Expression) to have hold of all the necessary elements already and local event handlers for add bar pop-up(pu) buttons and fields
+} 
+
+//IIFE (Immediately Invoked Function Expression) to have hold of all the necessary elements already and local event handlers for add bar pop-up(pu) buttons and fields

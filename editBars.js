@@ -1,4 +1,4 @@
-export function editBars(ev) {
+function editBars(ev) {
   const editBarDiv = document.getElementById("edit-bar-tooltip"),
         closeIcon = document.getElementById("close-edit"),
         confirmIcon = document.getElementById("confirm-edit"),
@@ -33,3 +33,11 @@ export function editBars(ev) {
     editBarDiv.classList.remove("active-tooltip");
   }
 }
+
+// Event Delegation
+document.getElementById("bar-plane").addEventListener("click", (e) => {
+  console.log("Bar plane was clicked")
+  if(e.target.classList.contains('bar')) {
+    editBars(e);
+  }
+})
