@@ -51,40 +51,35 @@ function yAxisBarIndxAndVal() {
 };
 yAxisBarIndxAndVal();          //! for testing, no need to call it on an empty canvas
 
-//! addBar has been moved to its own file.
-//! editBars has been moved to its own file.
-
 // <========================================= Removing All Bars Functionality =========================================>
-const removeAllBars = () => {
+function removeAllBars () {
   const barPlaneDiv = document.getElementById("bar-plane");
   barPlaneDiv.innerHTML = null;
 }
+  document.getElementById("remove-all-bar-btn").addEventListener("click", removeAllBars)
 
 // <========================================= Saving/Downloading Functionality =========================================>
 //! Cancelling still downloads an empty file, fix that.
-(function saveBars() {
-let saveBarsBtn = document.getElementById('save-bars-btn');
-saveBarsBtn.addEventListener("click", () => {
-    barDivs = document.querySelectorAll('.bar');
-    obj = { 
-      allBars: [] 
-    };
+document.getElementById("save-bars-btn").addEventListener("click", function saveBars(e) {
+  barDivs = document.querySelectorAll('.bar');
+  obj = { 
+    allBars: [] 
+  };
 
-    for(let i = 0; i < barDivs.length; i++) {
-      obj.allBars.push(
-        {
-          barValue: parseFloat(barDivs[i].getAttribute("bar-value")),
-          barColor: window.getComputedStyle(barDivs[i]).getPropertyValue("background-color"),
-          barLabel: window.getComputedStyle(barDivs[i]).getPropertyValue('--stands-for-text'),
-        }
-      )
-    }
-    
-    const data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-    saveBarsBtn.href = 'data:' + data;
-    saveBarsBtn.download = 'SaveBars.json';
-});
-})();
+  for(let i = 0; i < barDivs.length; i++) {
+    obj.allBars.push(
+      {
+        barValue: parseFloat(barDivs[i].getAttribute("bar-value")),
+        barColor: window.getComputedStyle(barDivs[i]).getPropertyValue("background-color"),
+        barLabel: window.getComputedStyle(barDivs[i]).getPropertyValue('--stands-for-text'),
+      }
+    )
+  }
+  
+  const data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+  e.target.href = 'data:' + data;
+  e.target.download = 'SaveBars.json';
+})
 
 // <========================================= Loading Functionality =========================================>
 const loadBarFiles = document.getElementById("load-bars-file");

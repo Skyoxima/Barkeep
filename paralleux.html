@@ -13,8 +13,7 @@
       <div id="landing-container">
         <p id="landing-title">Paralleux</p>
         <p id="landing-subtitle">Create your own parallel Bar graphs!</p>
-        <a id="start-btn" style="--clr: #fafafa" onclick="scrollToCanvas(event)"
-          ><span>Create!</span><i></i
+        <a id="start-btn" style="--clr: #fafafa"><span>Create!</span><i></i
         ></a>
       </div>
       <div id="circles">
@@ -99,14 +98,10 @@
       </div>
 
       <div id="controlpanel" class="container">
-        <button id="add-bar-btn" onclick="addBar()">Add Bar</button>
-        <button id="remove-all-bar-btn" onclick="removeAllBars()">
-          Remove All
-        </button>
+        <button id="add-bar-btn">Add Bar</button>
+        <button id="remove-all-bar-btn">Remove All</button>
         <a href="" id="save-bars-btn" download>Save Bars</a>
-        <button id="load-bars-btn" onclick="invokeFileUpload()">
-          Load Bars
-        </button>
+        <button id="load-bars-btn">Load Bars</button>
         <input type="file" id="load-bars-file" accept=".json" />
       </div>
     </section>
@@ -179,7 +174,6 @@
     <div
       id="info-button"
       class="info-btn"
-      onclick="unhideInfo(event)"
       title="Instructions"
     >
       <i class="fa-sharp fa-solid fa-info fa-2x"></i>

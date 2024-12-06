@@ -1,3 +1,5 @@
+document.getElementById("add-bar-btn").addEventListener("click", addBar)
+
 function addBar() {
   const xTicksSpans = document.querySelectorAll('.x-ticks'),
         zXTickPsn = xTicksSpans[0].getBoundingClientRect(),          // z ~ zero-th
@@ -10,14 +12,6 @@ function addBar() {
         newBarColor = document.getElementById("bar-color-picker"),
         popUpSubmitBtn = document.getElementById("pop-up-submit"),
         popUpCancelBtn = document.getElementById("pop-up-cancel");
-  
-  // Entering the pop-up by using the button on the Control Panel
-  // addBarBtn.onclick = () => {
-  //   document.querySelector("#edit-bar-tooltip").classList.remove("active-tooltip");
-  //   popUpSubmitBtn.disabled = true;
-  //   addBarPopUp.style.display = 'block';
-  //   blockerDiv.style.display = 'block';
-  // }
   
   // Cleanup the screen first
   document.querySelector("#edit-bar-tooltip").classList.remove("active-tooltip");

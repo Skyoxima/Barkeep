@@ -1,21 +1,19 @@
-function scrollToCanvas(e) {
+document.getElementById("start-btn").addEventListener("click", function scrollToCanvas() {
   const y = window.innerHeight;
   window.scroll({
     top: y,
     behavior: "smooth",
   });
-}
+})
 
-function invokeFileUpload() {
+document.getElementById("load-bars-btn").addEventListener("click", function invokeFileUpload() {
   fileUploadTag = document.getElementById("load-bars-file");
   fileUploadTag.click(); // invokes a click on the almost non-existing file tag, make the upload box appear
-}
+})
 
-function unhideInfo(e) {  
+document.getElementById("info-button").addEventListener("click", function showInfo(e) {  
   document.querySelector("#edit-bar-tooltip").classList.remove("active-tooltip");
   e.target.classList.toggle("active");
-  console.log()
-  // e.target.firstChild.classList.toggle("active");
   infoTxt = document.querySelector(".info-text");
   infoTxt.classList.toggle("active-text");
   if (infoTxt.classList.contains("active-text"))
@@ -27,4 +25,4 @@ function unhideInfo(e) {
       ) + 40
     }px`;
   else infoTxt.style.height = 0;
-}
+})
