@@ -10,7 +10,7 @@
     else if(i / 2 > 3 && i / 2 < 7)
       xTicks[i].style.setProperty("--tick-text-color", "#ffb700");
   }
-})();
+})(); //IIFE-ing these so that they make the dynamic UI asap after the HTML elements are loaded
 
 // <========================================= Adjusting the bar width whenever xTicks change =========================================>
 (function adjustBarWidths() {

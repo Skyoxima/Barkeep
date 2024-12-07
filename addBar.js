@@ -1,5 +1,5 @@
 document.getElementById("add-bar-btn").addEventListener("click", addBar)
-
+const invalidPtrn = new RegExp(/[^0-9\.]|(?<=\.\d*)\./, "g");
 function addBar() {
   const xTicksSpans = document.querySelectorAll('.x-ticks'),
         zXTickPsn = xTicksSpans[0].getBoundingClientRect(),          // z ~ zero-th
@@ -24,19 +24,14 @@ function addBar() {
     if(newBarVal.value === "")                                                  // disable the add button for all invalid inputs i.e no value to set to
       popUpSubmitBtn.disabled = true;
     else {
-      newBarVal.value = newBarVal.value.replace(/^\.|[^0-9\.]||10.|(?<=\.\d\d).*/g, "");      
+      console.log('here');
+      popUpSubmitBtn.disabled = false
+      console.log(invalidPtrn.test(newBarVal.value))
+      newBarVal.value = newBarVal.value.replace(invalidPtrn, "");
       popUpSubmitBtn.disabled = false;
     }
   }
-  // ^\. → . cannot be at the start of the string
-  // [^0-9\.] → don't allow any text other than digits and decimal
-  // (?<=\.\d*)\. → if there is already a decimal, don't allow another decimal
-  //- 1[^0\.] → 1 should not be followed by any digit except 0 or a decimal point, _if_ there isn't a decimal already ahead
-  //- [2-9]\d → 2-9 should not be followed by any number
-  // → any number should not be followed by anything except decimal, _if_ there isn't a decimal already
-  // 10. → 10 should not be followed by anything (10 is the max limit)
-  // (?<=\.\d\d).* → decimal should be followed by at most 2 digits, rest should not be allowed
-
+  
   // With the entered data, adding the new bar on the canvas when Add is clicked
   popUpSubmitBtn.onclick = () => {
     let bar = document.createElement('div');
