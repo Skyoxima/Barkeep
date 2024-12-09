@@ -34,7 +34,8 @@ function editBars(ev) {
   }
 }
 
-// Event Delegation
+//~ Event Delegation - While bubbling, the event can be caught by the parent's listener and within the callback...
+//~ ...determine from which child it was for through event object, that way, no need to add ELs to each child while creation
 document.getElementById("bar-plane").addEventListener("click", (e) => {
   console.log("Bar plane was clicked")
   if(e.target.classList.contains('bar')) {
