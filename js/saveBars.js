@@ -4,7 +4,8 @@ export function saveBars(e) {
   const obj = { 
     allBars: [] 
   };
-
+  console.log(DOM_ELEMENTS.barDivs);
+  
   for(let i = 0; i < DOM_ELEMENTS.barDivs.length; i++) {
     obj.allBars.push(
       {

@@ -1,6 +1,6 @@
 import {removeAllBars, yAxisBarIndxAndVal} from "./paralleux.js"
-
 const loadBarFiles = document.getElementById("load-bars-file");
+
 
 async function loadBars() {
   const loadedBars = await new Response(loadBarFiles.files[0]).json(),                       //! understand this line...
@@ -14,8 +14,9 @@ async function loadBars() {
     bar.className = 'bar';
     bar.style.background = loadedBars.allBars[i].barColor;
     bar.style.setProperty("--stands-for-text", loadedBars.allBars[i].barLabel);
+    console.log(loadedBars.allBars[i].barValue)
     bar.setAttribute("bar-value", loadedBars.allBars[i].barValue);
-    bar.setAttribute("bar-number", barPlaneDiv.childElementCount + 1);
+    bar.setAttribute("bar-number", i + 1);
     
     let iXTickPsn = xTicksSpans[loadedBars.allBars[i].barValue * 2].getBoundingClientRect();
     const barWidth = iXTickPsn.left - zXTickPsn.left;

@@ -51,7 +51,7 @@ function addBar() {
     const barWidth = (lastTickPsn.left - zXTickPsn.left) * (parseFloat(newBarVal.value) / 10);
     bar.style.width = `${barWidth}px`;
     barPlaneDiv.appendChild(bar);
-    DOM_ELEMENTS.barDivs = document.querySelectorAll(".bar");
+    
     barPlaneDiv.lastElementChild.animate(
       [
         {width: "0px", opacity: 0},
