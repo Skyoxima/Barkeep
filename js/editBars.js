@@ -1,22 +1,23 @@
-function editBars(ev) {
-  const editBarDiv = document.getElementById("edit-bar-tooltip"),
-        closeIcon = document.getElementById("close-edit"),
+import { DOM_ELEMENTS } from "./dom.js";
+
+export function editBars(ev) {
+  const closeIcon = document.getElementById("close-edit"),
         confirmIcon = document.getElementById("confirm-edit"),
         deleteIcon = document.getElementById("delete-bar"),
         labelChangeTxt = document.getElementById("change-label"),
         colorInput = document.getElementById("edit-color-swatch");
-
-  editBarDiv.style.left = `${ev.pageX}px`;      //! have to consider the whole page
-  editBarDiv.style.top = `${ev.pageY}px`;
-  editBarDiv.classList.add("active-tooltip");
+  
+  DOM_ELEMENTS.editBarModal.style.left = `${ev.pageX}px`;      //! have to consider the whole page
+  DOM_ELEMENTS.editBarModal.style.top = `${ev.pageY}px`;
+  DOM_ELEMENTS.editBarModal.classList.add("active-modal");
   
   deleteIcon.onclick = () => {
     labelChangeTxt.value = ""; 
-    editBarDiv.classList.remove("active-tooltip");
+    DOM_ELEMENTS.editBarModal.classList.remove("active-modal");
     ev.target.remove();
   }
   
-  confirmIcon.onclick = (e) => {
+  confirmIcon.onclick = () => {
     // ev is accessible because of function closure i.e editBars is HOF because of this function
     ev.target.style.backgroundColor = colorInput.value;
     if(labelChangeTxt.value == "-") {
@@ -25,20 +26,14 @@ function editBars(ev) {
       ev.target.style.setProperty("--stands-for-text", `"${labelChangeTxt.value}"`);
     }
     labelChangeTxt.value = ""; 
-    editBarDiv.classList.remove("active-tooltip");
+    DOM_ELEMENTS.editBarModal.classList.remove("active-modal");
   }
   
   closeIcon.onclick = () => {
     labelChangeTxt.value = ""; 
-    editBarDiv.classList.remove("active-tooltip");
+    DOM_ELEMENTS.editBarModal.classList.remove("active-modal");
   }
 }
-
-//~ Event Delegation - While bubbling, the event can be caught by the parent's listener and within the callback...
-//~ ...determine from which child it was for through event object, that way, no need to add ELs to each child while creation
-document.getElementById("bar-plane").addEventListener("click", (e) => {
-  console.log("Bar plane was clicked")
-  if(e.target.classList.contains('bar')) {
-    editBars(e);
-  }
-})
+// in my head, I have put handlers here and not in the listeners file because these handlers are strictly pertaining to the elements 
+// found inside the parent element, i.e., the edit bars modal. I might change them to listeners though...
+// The same reason applies for not putting the element references used here in DOM_ELEMENTS, nothing else use these elements.

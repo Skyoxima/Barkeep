@@ -1,18 +1,15 @@
-document.getElementById("start-btn").addEventListener("click", function scrollToCanvas() {
+import { DOM_ELEMENTS } from "./dom.js";
+
+export function scrollToCanvas() {
   const y = window.innerHeight;
   window.scroll({
     top: y,
     behavior: "smooth",
   });
-})
+}
 
-document.getElementById("load-bars-btn").addEventListener("click", function invokeFileUpload() {
-  const fileUploadTag = document.getElementById("load-bars-file");
-  fileUploadTag.click(); // invokes a click on the almost non-existing file tag, make the upload box appear
-})
-
-document.getElementById("info-button").addEventListener("click", function showInfo(e) {  
-  document.querySelector("#edit-bar-tooltip").classList.remove("active-tooltip");
+export function showInfo(e) {    
+  DOM_ELEMENTS.editBarModal.classList.remove("active-modal");
   e.target.classList.toggle("active");
   const infoTxt = document.querySelector(".info-text");
   infoTxt.classList.toggle("active-text");
@@ -25,4 +22,41 @@ document.getElementById("info-button").addEventListener("click", function showIn
       ) + 40
     }px`;
   else infoTxt.style.height = 0;
-})
+}
+
+export function barAnimator(element, keyframes, options) {
+  element.animate([
+    ...keyframes
+  ], options)
+}
+
+export function resetFields(elements, targets, defaultVals) {
+  
+  try {
+    if(elements.length !== targets.length) {
+      throw Error("noofelements !== nooftargets");
+    } else if (targets.length !== defaultVals.length) {
+      throw Error ("nooftargets !== noofdefaults");
+    } else {
+      throw Error("noofelements !== noofdefaults");
+    }
+  } catch (err) {
+    console.error(err)
+  }
+
+  for (let i = 0; i < elements.length; i++) {
+    switch (targets[i]) {
+      case "value":
+        elements[i].value = defaultVals[i];
+        break;
+      case "display":
+        elements[i].style.display = defaultVals[i];
+    }
+  }
+  
+  // newBarVal.value = "";
+  // newBarLabel.value = "";
+  // newBarColor.value = BASE_COLOR;
+  // addBarPopUp.style.display = 'none';
+  // blockerDiv.style.display = 'none';
+}

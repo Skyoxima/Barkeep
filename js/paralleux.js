@@ -67,6 +67,3 @@ export function removeAllBars() {
   const barPlaneDiv = document.getElementById("bar-plane");
   barPlaneDiv.innerHTML = null;
 }
-document
-  .getElementById("remove-all-bar-btn")
-  .addEventListener("click", removeAllBars);
