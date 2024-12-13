@@ -4,9 +4,9 @@ export function saveBars(e) {
   const obj = { 
     allBars: [] 
   };
-  console.log(DOM_ELEMENTS.barDivs);
   
   for(let i = 0; i < DOM_ELEMENTS.barDivs.length; i++) {
+    console.log(window.getComputedStyle(DOM_ELEMENTS.barDivs[i]).getPropertyValue('--stands-for-text'));
     obj.allBars.push(
       {
         barValue: parseFloat(DOM_ELEMENTS.barDivs[i].getAttribute("bar-value")),

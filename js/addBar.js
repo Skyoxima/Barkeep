@@ -7,29 +7,9 @@ const addBarVal = document.getElementById("new-bar-val"),
       blockerDiv = document.querySelector('.blocker'),
       addBarPopUp = document.querySelector('.add-bar-pu'),
       addBarLbl = document.getElementById("new-bar-label"),
-        addBarCol = document.getElementById("bar-color-picker"),
+      addBarCol = document.getElementById("bar-color-picker"),
       popUpSubmitBtn = document.getElementById("pop-up-submit"),
       popUpCancelBtn = document.getElementById("pop-up-cancel");
-
-// this is extracted so that it can be re-used in loadBars for each bar to be loaded.
-export function addBarToDOM(label, color, value) {
-  const lastTickPsn = DOM_ELEMENTS.xTicks[DOM_ELEMENTS.xTicks.length - 1].getBoundingClientRect();
-  const zXTickPsn = DOM_ELEMENTS.xTicks[0].getBoundingClientRect();
-
-  let bar = document.createElement('div');
-  bar.className = 'bar';
-  bar.style.background = color === "#ffffff" ? "#FAFAFA" : color; // to not make an invisible bar
-  bar.style.setProperty("--stands-for-text", `"${label}"`);
-  bar.setAttribute("bar-value", value);
-  bar.setAttribute("bar-number", DOM_ELEMENTS.barPlane.childElementCount);
-
-  const barWidth = (lastTickPsn.left - zXTickPsn.left) * (parseFloat(addBarVal.value) / 10);
-  bar.style.width = `${barWidth}px`;
-
-  // querySelector works for barPlane, check the dom.js file notes
-  DOM_ELEMENTS.barPlane.appendChild(bar);
-  return barWidth;
-}
 
 export function handleAddBar() {
   // Cleanup the screen first
@@ -38,6 +18,33 @@ export function handleAddBar() {
   // make the pop-up (modal) visible
   addBarPopUp.style.display = 'block';
   blockerDiv.style.display = 'block';
+
+  // if cancel was previously clicked before "value" was cleared.
+  if (addBarVal.value !== "") {
+    popUpSubmitBtn.disabled = false
+  } else {
+    popUpSubmitBtn.disabled = true;
+  }
+}
+
+// this is extracted so that it can be re-used in loadBars for each bar to be loaded.
+export function addBarToDOM(label, color, value) {
+  const lastTickPsn = DOM_ELEMENTS.xTicks[DOM_ELEMENTS.xTicks.length - 1].getBoundingClientRect();
+  const zXTickPsn = DOM_ELEMENTS.xTicks[0].getBoundingClientRect();
+
+  let bar = document.createElement('div');
+  bar.className = 'bar';
+  bar.style.background = color === "#ffffff" ? "#FAFAFA" : color; // to not make an invisible bar w.r.t white bg
+  bar.style.setProperty("--stands-for-text", label[0] === '\'' ?`${label}` : `\'${label}\'`);  //! quotes problem
+  bar.setAttribute("bar-value", value);
+  bar.setAttribute("bar-number", DOM_ELEMENTS.barPlane.childElementCount);
+  
+  const barWidth = (lastTickPsn.left - zXTickPsn.left) * (parseFloat(value) / 10);
+  bar.style.width = `${barWidth}px`;
+  
+  // querySelector works for barPlane, check the dom.js file notes
+  DOM_ELEMENTS.barPlane.appendChild(bar);
+  return barWidth;
 }
 
 function handleAddBarPopUp() {

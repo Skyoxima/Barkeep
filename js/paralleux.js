@@ -26,7 +26,7 @@ import { DOM_ELEMENTS } from "./dom.js";
       }px`;
       //. * 2 makes the value correctly correspond to its index
 
-      // keeps the bar index on within the y-axis - offsetLeft gives position relative to the parent which is what I wanted for 0th x-tick
+      // keeps the bar index on within the y-axis. -offsetLeft gives position relative to the parent which is what I wanted for 0th x-tick
       if (i < 9)
         DOM_ELEMENTS.barDivs[i].style.setProperty(
           "--bar-index-left",

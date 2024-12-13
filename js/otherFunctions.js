@@ -37,7 +37,7 @@ export function resetFields(elements, targets, defaultVals) {
       throw Error("noofelements !== nooftargets");
     } else if (targets.length !== defaultVals.length) {
       throw Error ("nooftargets !== noofdefaults");
-    } else {
+    } else if (elements.length !== defaultVals.length) {
       throw Error("noofelements !== noofdefaults");
     }
   } catch (err) {
@@ -53,10 +53,4 @@ export function resetFields(elements, targets, defaultVals) {
         elements[i].style.display = defaultVals[i];
     }
   }
-  
-  // newBarVal.value = "";
-  // newBarLabel.value = "";
-  // newBarColor.value = BASE_COLOR;
-  // addBarPopUp.style.display = 'none';
-  // blockerDiv.style.display = 'none';
 }

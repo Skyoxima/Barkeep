@@ -303,7 +303,7 @@ I presume it was because of border-left being 2px and y-axis being a copied rota
 
 #main #bar-plane {
   position: relative;
-  width: 100%; height: 100%;
+  width: 98.25%; height: 100%;
   top: 20px; left: 1.75%;
 }
 
