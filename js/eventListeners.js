@@ -1,7 +1,7 @@
 import { DOM_ELEMENTS } from "./dom.js";
 import { saveBars } from "./saveBars.js";
 import { handleAddBar } from "./addBar.js";
-import { scrollToCanvas, showInfo } from './otherFunctions.js'
+import { blockerClick, scrollToCanvas, showInfo } from './otherFunctions.js'
 import { editBars } from "./editBars.js";
 import { loadBars } from "./loadBars.js";
 import { adjustBarWidths, removeAllBars } from "./paralleux.js";
@@ -10,6 +10,12 @@ import { adjustBarWidths, removeAllBars } from "./paralleux.js";
 window.addEventListener("resize", adjustBarWidths)
 
 DOM_ELEMENTS.startBtn.addEventListener("click", scrollToCanvas)
+
+DOM_ELEMENTS.blockerDiv.addEventListener("click", blockerClick)
+DOM_ELEMENTS.blockerDiv.firstElementChild.addEventListener("click", (e) => {
+  e.stopPropagation();
+})
+//~ not using this would close the blockerDiv when any click is registered inside the modal, Event Bubbling.
 
 //~ Event Delegation - While bubbling, the event can be caught by the parent's listener and within the callback...
 //~ ...determine from which child it was for through event object, that way, no need to add ELs to each child while creation

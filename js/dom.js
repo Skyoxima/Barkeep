@@ -4,6 +4,7 @@ export const DOM_ELEMENTS = {
     return Array.from(document.getElementsByClassName("bar"));
   },
   barPlane: document.querySelector("#bar-plane"),
+  blockerDiv: document.querySelector('.blocker'),
   xTicks: document.querySelectorAll('.x-ticks'),
   addBarBtn: document.getElementById("add-bar-btn"),
   saveBarsBtn: document.getElementById("save-bars-btn"),
