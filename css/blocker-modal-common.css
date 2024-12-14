@@ -1,0 +1,77 @@
+.blocker {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgb(0, 0, 0, 0.2);
+  display: none;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+}
+
+.blocker .pop-up {
+  position: absolute;
+  width: 500px; height: 300px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 25px;
+  border: 2px solid white;
+  
+  /* scale: 0; */
+  transition: scale 5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.blocker .pop-up.add-bar-pu {
+  display: none;
+}
+
+/* ====================================================== Common to all pop-ups ====================================================== */
+.blocker .pop-up .header {
+  margin: 10px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.blocker .pop-up .pop-up-txt-input {
+  padding: 15px;
+  display: flex; justify-content: start; align-items: center;
+}
+
+.blocker .pop-up label {
+  font-size: 1.5em;
+  padding-right: 12px;
+  color: #363636;
+}
+
+.blocker .pop-up input[type=text] {
+  outline: none; border: none;
+  padding: 4px;
+  font-size: 18px;
+  border-radius: 10px;
+  border-bottom: 2px solid #ffc0cb;
+  color: grey;
+}
+
+.blocker .pop-up .pop-up-sub-div {
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.blocker .pop-up .pop-up-sub-div .pop-up-txt-input  {
+  width: 40%;
+}
+
+.blocker .pop-up .pop-up-sub-div .pop-up-txt-input input {
+  width: 30%;
+}
+
+.blocker .pop-up button {
+  position: absolute;
+  top: 85%; 
+  width: 120px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 24px;
+  transition: scale 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+}

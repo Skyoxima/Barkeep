@@ -1,0 +1,35 @@
+/* ====================================================== Specific to Add Bar Pop-up ====================================================== */
+.blocker .pop-up .pop-up-sub-div .add-bar-color {
+  width: 60%;
+  display: flex; justify-content: start; align-items: center;
+}
+
+.blocker .pop-up .pop-up-sub-div .add-bar-color input[type="color"] { 
+  width: 120px;
+  background: 
+    linear-gradient(to right, #12c2e9, #c471ed, #f64f59) padding-box,
+    linear-gradient(to right, #12c2e9, #c471ed, #f64f59) border-box;
+  border: none;
+  border-radius: 20px;
+}
+.blocker .pop-up .pop-up-sub-div .add-bar-color input::-webkit-color-swatch {
+  box-shadow: 0 0 2px 1px white;
+  border: none;
+  border-radius: 20px;
+}
+
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-submit {
+  right: 4%;
+  background: pink;
+}
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-submit:disabled {
+  background: grey;
+}
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-submit:active,
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-cancel:active {
+  scale: 0.90;
+}
+.blocker .pop-up.pop-up.add-bar-pu #pop-up-cancel {
+  right: 30%;
+  background: rgb(183, 228, 255);
+}

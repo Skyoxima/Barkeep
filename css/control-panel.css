@@ -1,0 +1,39 @@
+#controlpanel {
+  width: 80%;
+  padding: 10px;
+  display: flex; justify-content: center;
+  margin-top: 45px;
+}
+
+#controlpanel button,
+#controlpanel a {
+  margin-right: 30px;
+  width: 120px; height: 60px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid white;
+  text-align: center;
+  font-size: 1.1em;
+  transition: scale .5s, box-shadow .5s;
+  cursor: pointer;
+}
+
+#controlpanel a { 
+  display: flex; justify-content: center; align-items: center;
+  text-decoration: none; 
+  color: black;  
+}
+
+#controlpanel:hover button, 
+#controlpanel:hover a {
+  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.45);
+}
+
+#controlpanel button:active,
+#controlpanel a:active {
+  scale: 0.90;
+}
+
+#controlpanel #load-bars-file {
+  display: none;
+}

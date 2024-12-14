@@ -1,0 +1,52 @@
+.info-btn {
+  width: 3.5rem; height: 3.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  border: 1px solid grey;
+  transition: box-shadow 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  box-shadow: 0 5px 0 0 grey;
+  cursor: pointer;
+} .info-btn:active, .info-btn.active {
+  box-shadow: 0 -5px 0 1px grey;
+}
+
+#info-button {
+  position: absolute;
+  right: 20px; top: calc(100% + 20px);
+}
+
+.info-btn i { 
+  position: absolute;
+  top: 50%; left: 50%;
+  translate: -50% -50%;
+  color: grey;
+  pointer-events: none;
+  transition: scale 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.info-text {
+  position: relative;
+  translate: 0 -100%;
+  margin-bottom: 1rem;
+  background: white;
+  color: grey;
+  font-size: 1.2em;
+  opacity: 0;
+  height: 0;
+  transition: height 0.5s, translate 0.5s, opacity 0.5s;
+  transition-delay: 0s, 0s, 0s;
+  pointer-events: none;
+}
+.info-text.active-text {
+  translate: 0;
+  opacity: 1;
+  transition-delay: 0s, 0s, 0.25s;
+}
+
+.info-text h2 {
+  text-align: center;
+}
+
+.info-text ul {
+  padding: 25px;  
+}

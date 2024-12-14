@@ -1,0 +1,51 @@
+#bar-title-div {
+  position: relative;
+  width: 325px; height: 40px;
+  
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.35);
+  border: 2px solid white;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  z-index: 0;
+  transition: background .5s, box-shadow .5s;
+}
+
+#bar-title-div:hover {
+  background: white;
+  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.45);
+}
+
+#bar-title-div::before {
+  content: '';
+  position: absolute;
+  left: -8.75px; top: 0;
+  width: 7px; height: 7px;
+  border-radius: 0 20px 0 0;
+  box-shadow: 2px -2px 0 white;
+  background: transparent;
+}
+
+#bar-title-div::after {
+  content: '';
+  position: absolute;
+  right: -8.75px; top: 0;
+  width: 7px; height: 7px;
+  border-radius: 20px 0 0 0;
+  box-shadow: -2px -2px 0 white;
+  background: transparent;
+}
+
+#bar-title-div #bar-title {
+  position: absolute;
+  top: 50%; left: 50%;
+  /* translate: -50% -50%; */
+  transform: translate(-50%, -50%);
+  outline: none;
+}
+
+#bar-title-div #bar-title:focus {
+  padding: 1px 5px;
+  border-bottom: 1px solid black;
+  border-radius: 10px;
+}

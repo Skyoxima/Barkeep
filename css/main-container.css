@@ -1,0 +1,97 @@
+#main {
+  position: relative;
+  width: 60%; height: 700px;
+  /* mentioning height to be 700px is what enables me to handle the overflow, otherwise the div would've simply expanded */
+  overflow: hidden;
+  z-index: 1;
+  overflow-y: scroll;
+}
+
+#main::-webkit-scrollbar {
+  display: none;
+}
+
+#main .axes {
+  position: relative;
+  width: 100%; min-height: 100%;
+}
+
+#main .axes .x-axis {
+  position: relative;
+  width: 100%; height: 2px;
+  top: 20px;
+  border-top: 2px solid grey;
+}
+
+/* JS is used to position the ticks at fixed intervals */
+#main .axes .x-axis .x-ticks {
+  position: absolute;
+  transform: translate(-30%, -60%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: grey;
+}
+#main .axes .x-axis .x-ticks::before {
+  content: var(--tick-text);
+  position: absolute;
+  translate: 8px -20px;
+  color: var(--tick-text-color);
+}
+
+#main .axes .x-axis .x-ticks.half-tick {
+  width: 2px; height: 10px;
+  border-radius: 0;
+}
+#main .axes .x-axis .x-ticks.half-tick::before {
+  content: "";
+}
+
+#main .axes .y-axis {
+  position: absolute;
+  left: 1.75%;
+  width: 2px; min-height: calc(100% - 2px);
+  border-left: 2px solid grey;
+}
+/* That -2px in height is for solving the scroll issue on the initial board, now it doesn't have a scroll, 
+I presume it was because of border-left being 2px and y-axis being a copied rotated x-axis */
+
+#main #bar-plane {
+  position: relative;
+  width: 98.25%; height: 100%;
+  top: 20px; left: 1.75%;
+}
+
+#main #bar-plane .bar {
+  position: relative;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  width: 48.25%; height: 40px;              /* left(1.75%, of the x-plane as a whole) */
+  background: pink;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-left: 2px solid grey;
+  transition: width 0.5s, background-color 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+  box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.2);
+}
+
+#main #bar-plane .bar::before {
+  content: attr(bar-number);
+  position: absolute;
+  width: 20px;
+  left: var(--bar-index-left); top: 18%;
+  display: flex; justify-content: center; align-items: center;
+}
+
+#main #bar-plane .bar::after {
+  content: var(--stands-for-text);
+  position: absolute;
+  left: 8px; top: 100%;
+  font-style: italic;
+  color: var(--stands-for-color);
+}
+
+#main #bar-plane .bar span {
+  position: absolute;
+  top: 50%; right: -1rem;
+  translate: 0 -50%;
+}
