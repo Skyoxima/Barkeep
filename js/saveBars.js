@@ -1,7 +1,10 @@
 import { DOM_ELEMENTS } from "./dom.js";
 
 export function saveBars(e) {
+  const title = document.getElementById('bar-title').textContent;
+
   const obj = { 
+    title: title,
     allBars: [] 
   };
   
