@@ -15,31 +15,30 @@ import { DOM_ELEMENTS } from "./dom.js";
 })(); //IIFE-ing these so that they make the dynamic UI asap after the HTML elements are loaded
 
 // <========================================= Adjusting the bar width whenever xTicks change =========================================>
-(function adjustBarWidths() {
-  window.addEventListener("resize", () => {
-    for (let i = 0; i < DOM_ELEMENTS.barDivs.length; i++) {
-      DOM_ELEMENTS.barDivs[i].style.width = `${
-        DOM_ELEMENTS.xTicks[
-          parseFloat(DOM_ELEMENTS.barDivs[i].getAttribute("bar-value")) * 2
-        ].getBoundingClientRect().left -
-        DOM_ELEMENTS.xTicks[0].getBoundingClientRect().left
-      }px`;
-      //. * 2 makes the value correctly correspond to its index
+  export function adjustBarWidths() {
+  const zXTickPsn = DOM_ELEMENTS.xTicks[0].getBoundingClientRect();
+  const lastTickPsn = DOM_ELEMENTS.xTicks[DOM_ELEMENTS.xTicks.length - 1].getBoundingClientRect();
+  
+  for (let i = 0; i < DOM_ELEMENTS.barDivs.length; i++) {
+    DOM_ELEMENTS.barDivs[i].style.width = `${
+      (lastTickPsn.left - zXTickPsn.left) * (DOM_ELEMENTS.barDivs[i].getAttribute("bar-value") / 10)
+    }px`;
 
-      // keeps the bar index on within the y-axis. -offsetLeft gives position relative to the parent which is what I wanted for 0th x-tick
-      if (i < 9)
-        DOM_ELEMENTS.barDivs[i].style.setProperty(
-          "--bar-index-left",
-          `${-(DOM_ELEMENTS.xTicks[0].offsetLeft + 5)}px`
-        );
-      if (i >= 9)
-        DOM_ELEMENTS.barDivs[i].style.setProperty(
-          "--bar-index-left",
-          `${-(DOM_ELEMENTS.xTicks[0].offsetLeft + 3)}px`
-        );
-    }
-  });
-})();
+    // keeps the bar index on within the y-axis. -offsetLeft gives position relative to the parent which is what I wanted for 0th x-tick
+    if (i < 9)
+      DOM_ELEMENTS.barDivs[i].style.setProperty(
+        "--bar-index-left",
+        `${-(DOM_ELEMENTS.xTicks[0].offsetLeft + 5)}px`
+      );
+    if (i >= 9)
+      DOM_ELEMENTS.barDivs[i].style.setProperty(
+        "--bar-index-left",
+        `${-(DOM_ELEMENTS.xTicks[0].offsetLeft + 3)}px`
+      );
+  }
+} 
+
+//! Indexing is broken now that 2 decimal places are allowed and it is not just .5s
 
 // <========================================= Indexing the Bars =========================================>
 export function yAxisBarIndxAndVal() {

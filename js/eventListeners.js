@@ -4,8 +4,10 @@ import { handleAddBar } from "./addBar.js";
 import { scrollToCanvas, showInfo } from './otherFunctions.js'
 import { editBars } from "./editBars.js";
 import { loadBars } from "./loadBars.js";
-import { removeAllBars } from "./paralleux.js";
+import { adjustBarWidths, removeAllBars } from "./paralleux.js";
 // These are ordered in correspondence of their respective HTML elements' order in the HTML file
+
+window.addEventListener("resize", adjustBarWidths)
 
 DOM_ELEMENTS.startBtn.addEventListener("click", scrollToCanvas)
 
