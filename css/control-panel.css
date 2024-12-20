@@ -1,37 +1,52 @@
 #controlpanel {
-  width: 80%;
   padding: 10px;
-  display: flex; justify-content: center;
-  margin-top: 45px;
+  display: flex; gap: 20px;
+  margin-top: 3rem;
 }
 
 #controlpanel button,
 #controlpanel a {
-  margin-right: 30px;
-  width: 120px; height: 60px;
-  background: white;
+  position: relative;
+  padding: 20px 10px;
+  min-width: 180px; height: 60px;
+  
+  background: linear-gradient(to right, var(--accent-clr-1-hex) 0% 33%, var(--bg-clr-hex) 33% 100%);
   border-radius: 20px;
-  border: 1px solid white;
-  text-align: center;
+  border: 1px solid var(--bg-clr-hex);
+  
   font-size: 1.1em;
+  
   transition: scale .5s, box-shadow .5s;
   cursor: pointer;
 }
 
-#controlpanel a { 
-  display: flex; justify-content: center; align-items: center;
+#controlpanel a {
   text-decoration: none; 
-  color: black;  
+  color: var(--abs-blk-hex);
 }
 
 #controlpanel:hover button, 
 #controlpanel:hover a {
-  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.45);
+  box-shadow: 0 2px 5px 0px rgb(var(--abs-blk-rgb), 0.45);
 }
 
 #controlpanel button:active,
 #controlpanel a:active {
   scale: 0.90;
+}
+
+#controlpanel button svg {
+  position: absolute;
+  top: 25%; left: 10%;
+  scale: 2;
+}
+
+#controlpanel p {
+  position: absolute;
+  top: 50%; left: 33%;
+  min-width: 66%;
+
+  translate: 0% -50%;
 }
 
 #controlpanel #load-bars-file {

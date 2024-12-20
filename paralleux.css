@@ -8,10 +8,38 @@
 @import url('./css/info.css');
 
 :root {
-  --tick-text: '0';
-  --tick-text-color: rgb(206, 0, 0);
-  --stands-for-text: 'Stands For?';
+  --landing-clr-rgb: 17, 17, 17;
+  --landing-clr-hex: #111111;
+  --landing-btn-rgb: 55, 55, 55;
+  --landing-btn-hex: #373737;
+  
+  --bg-clr-rgb: 255, 255, 255;
+  --bg-clr-hex: #ffffff;
+  --accent-clr-1-rgb: 183, 228, 255;
+  --accent-clr-1-hex: #b7e4ff;
+  --accent-clr-2-rgb: 255, 192, 203;
+  --accent-clr-2-hex: #ffc0cb;
+
+  --axes-clr-rgb: 128, 128, 128;
+  --axes-clr-hex: #808080;
+  --tick-clr-1-rgb: 206, 0, 0;
+  --tick-clr-1-hex: #ce0000;
+  --tick-clr-2-rgb: 255, 183, 0;
+  --tick-clr-2-hex: #ffb700;
+  --tick-clr-3-rgb: 0, 128, 0;
+  --tick-clr-3-hex: #008000;
+
+
+  --abs-blk-rgb: 0, 0, 0;
+  --abs-blk-hex: #000000;
+  
+  --primary-font-rgb: 255, 255, 255;
+  --primary-font-hex: #ffffff;
   --stands-for-color: grey;
+
+
+  --tick-text: '0';
+  --stands-for-text: 'Stands For?';
   --bar-index-left: -24px;
 }
 
@@ -23,15 +51,15 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(45deg, rgb(183, 228, 255), pink);
+  background: linear-gradient(45deg, var(--accent-clr-1-hex), var(--accent-clr-2-hex));
 }
 
 #landing-container {
   max-width: 100vw;
   height: 100vh;
-  background: rgb(17, 17, 17);
+  background: var(--landing-clr-hex);
   display: flex; justify-content: center; align-items: center; flex-direction: column;
-  color: white;
+  color: var(--primary-font-hex);
 }
 
 #landing-title {
@@ -47,9 +75,9 @@ body {
   position: relative;
   padding: 15px 45px;
   
-  background-color: rgb(55, 55, 55);
-  color: white;
-
+  background-color: rgb(var(--landing-btn-rgb));
+  
+  color: var(--primary-font-hex);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.4em;
@@ -66,7 +94,7 @@ body {
 #start-btn:hover {
   letter-spacing: 20px;
   color: var(--clr);
-  background: linear-gradient(45deg, rgb(183, 228, 255), pink);
+  background: linear-gradient(45deg, var(--accent-clr-1-hex), var(--accent-clr-2-hex));
   /* background-color: var(--clr); */
   box-shadow: 0 0 1em var(--clr);
 }
@@ -78,7 +106,7 @@ body {
 #start-btn::before {
   content: '';
   position: absolute;
-  background-color: rgb(18, 18, 18);
+  background-color: var(--landing-clr-hex);
   inset: 2px;
 }
 
@@ -95,7 +123,7 @@ body {
   
   transform: translateX(-50%);
 
-  background-color: rgb(35, 35, 35);
+  background-color: var(--landing-btn-hex);
   border: 2px solid var(--clr);
 
   transition: .5s;
@@ -141,14 +169,14 @@ body {
 }
 
 .container {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(var(--bg-clr-rgb), 0.5);
   border-radius: 25px;
-  border: 2px solid white;
+  border: 2px solid var(--bg-clr-hex);
   transition: background .5s, box-shadow .5s;
-  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.35);
+  box-shadow: 0 2px 5px 0px rgb(var(--abs-blk-rgb), 0.35);
 }
 
 .container:hover {
-  background: white;
-  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.45);
+  background: var(--bg-clr-hex);
+  box-shadow: 0 2px 5px 0px rgb(var(--abs-blk-rgb), 0.45);
 }

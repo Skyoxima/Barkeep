@@ -72,7 +72,7 @@
   animation-delay: 7s;
 }
 #circles div:nth-child(8) {
-  left: 50%;
+  left: 5%;
   width: 25px; height: 25px;
   animation-delay: 15s;
   animation-duration: 45s;

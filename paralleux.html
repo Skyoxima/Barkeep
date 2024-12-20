@@ -98,10 +98,40 @@
       </div>
 
       <div id="controlpanel" class="container">
-        <button id="add-bar-btn">Add Bar</button>
-        <button id="remove-all-bars-btn">Remove All</button>
-        <a href="" id="save-bars-btn" download>Save Bars</a>
-        <button id="load-bars-btn">Load Bars</button>
+        <button id="add-bar-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="22" y="2" width="2" height="20" rx="0.5" transform="rotate(90 22 2)" fill="black" />
+            <rect x="18" y="5" width="2" height="16" rx="0.5" transform="rotate(90 18 5)" fill="black" />
+            <circle cx="12" cy="15" r="6" stroke="black" stroke-width="2" />
+            <path
+              d="M11.3 15.56H9.76001C9.45073 15.56 9.20001 15.3092 9.20001 15C9.20001 14.6907 9.45073 14.44 9.76001 14.44H11.3C11.3773 14.44 11.44 14.3773 11.44 14.3V12.76C11.44 12.4507 11.6907 12.2 12 12.2C12.3093 12.2 12.56 12.4507 12.56 12.76V14.3C12.56 14.3773 12.6227 14.44 12.7 14.44H14.24C14.5493 14.44 14.8 14.6907 14.8 15C14.8 15.3092 14.5493 15.56 14.24 15.56H12.7C12.6227 15.56 12.56 15.6226 12.56 15.7V17.24C12.56 17.5492 12.3093 17.8 12 17.8C11.6907 17.8 11.44 17.5492 11.44 17.24V15.7C11.44 15.6226 11.3773 15.56 11.3 15.56Z"
+              fill="black" />
+          </svg>
+          <!-- <i class="fa-solid fa-plus"></i>-->   <!--! Put self-made icons here -->
+          <p>Add Bar</p>
+        </button>
+        <button id="remove-all-bars-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="5" width="2" height="16" rx="0.5" transform="rotate(90 18 5)" fill="black" />
+            <rect x="22" y="2" width="2" height="20" rx="0.5" transform="rotate(90 22 2)" fill="black" />
+            <path
+              d="M11.25 14.5V17.5C11.25 17.7761 11.3619 18 11.5 18C11.6381 18 11.75 17.7761 11.75 17.5V14.5C11.75 14.2239 11.6381 14 11.5 14C11.3619 14 11.25 14.2239 11.25 14.5Z"
+              fill="black" />
+            <path
+              d="M12.25 17.5V14.5C12.25 14.2239 12.3619 14 12.5 14C12.6381 14 12.75 14.2239 12.75 14.5V17.5C12.75 17.7761 12.6381 18 12.5 18C12.3619 18 12.25 17.7761 12.25 17.5Z"
+              fill="black" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M10.75 9.25V10H7.625C7.27982 10 7 10.2239 7 10.5V11H8.25V21.25C8.25 21.6642 8.52982 22 8.875 22H15.125C15.4702 22 15.75 21.6642 15.75 21.25V11H17V10.5C17 10.2239 16.7202 10 16.375 10H13.25V9.25C13.25 9.11193 13.1381 9 13 9H11C10.8619 9 10.75 9.11193 10.75 9.25ZM10.75 12.4375V19.75H13.25V12.4375H10.75Z"
+              fill="black" />
+          </svg>
+          <p>Remove All</p>
+        </button>
+        <a href="" id="save-bars-btn" download>
+          <p>Export Bars</p>
+        </a>
+        <button id="load-bars-btn">
+          <p>Import Bars</p>
+        </button>
         <input type="file" id="load-bars-file" accept=".json" />
       </div>
     </section>
@@ -110,16 +140,16 @@
       <div class="pop-up add-bar-pu">
         <p class="header">Add a Bar</p>
         <div class="pop-up-txt-input">
-          <label for="sf">Bar Label:</label
+          <label for="new-bar-label">Bar Label:</label
           ><input type="text" name="sf" id="new-bar-label" />
         </div>
         <div class="pop-up-sub-div">
           <div class="pop-up-txt-input">
-            <label for="val">Value:</label
+            <label for="new-bar-val">Value:</label
             ><input type="text" name="val" id="new-bar-val" />
           </div>
           <div class="add-bar-color">
-            <label for="barcolor">Pick Color:</label
+            <label for="bar-color-picker">Pick Color:</label
             ><input
               type="color"
               value="#ffc0cb"
@@ -176,20 +206,10 @@
       class="info-btn"
       title="Instructions"
     >
-      <i class="fa-sharp fa-solid fa-info fa-2x"></i>
+      <!-- <i class="fa-sharp fa-solid fa-info fa-2x"></i> --> <!--! Put self-made icons here -->
     </div>
-
-    <script
-      src="https://kit.fontawesome.com/459235f77f.js"
-      crossorigin="anonymous"
-    ></script>
     <script type="module" src="./js/dom.js"></script>
     <script type="module" src="./js/eventListeners.js"></script>
     <script type="module" src="./js/paralleux.js"></script>
-    <script type="module" src="./js/addBar.js"></script>
-    <script type="module" src="./js/editBars.js"></script>
-    <script type="module" src="./js/loadBars.js"></script>
-    <!-- <script type="module" src="./js/saveBars.js"></script> -->
-    <script type="module" src="./js/otherFunctions.js"></script>
   </body>
 </html>

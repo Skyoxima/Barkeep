@@ -8,9 +8,9 @@ import { DOM_ELEMENTS } from "./dom.js";
     DOM_ELEMENTS.xTicks[i].style.left = `${1.75 + 4.75 * i}%`; //95 percent in total
     DOM_ELEMENTS.xTicks[i].style.setProperty("--tick-text", `'${i / 2}'`);
     if (i / 2 > 6)
-      DOM_ELEMENTS.xTicks[i].style.setProperty("--tick-text-color", "green");
+      DOM_ELEMENTS.xTicks[i].classList.add('green');
     else if (i / 2 > 3 && i / 2 < 7)
-      DOM_ELEMENTS.xTicks[i].style.setProperty("--tick-text-color", "#ffb700");
+      DOM_ELEMENTS.xTicks[i].classList.add('yellow');
   }
 })(); //IIFE-ing these so that they make the dynamic UI asap after the HTML elements are loaded
 

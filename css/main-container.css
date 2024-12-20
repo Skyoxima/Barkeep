@@ -1,15 +1,18 @@
 #main {
   position: relative;
-  width: 60%; height: 700px;
-  /* mentioning height to be 700px is what enables me to handle the overflow, otherwise the div would've simply expanded */
-  overflow: hidden;
-  z-index: 1;
-  overflow-y: scroll;
-}
+  width: 60%; 
+  height: 700px;
 
-#main::-webkit-scrollbar {
+  overflow: hidden;
+  overflow-y: scroll;
+  z-index: 1;
+  /*~ Native Nesting! */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+} #main::-webkit-scrollbar {
   display: none;
-}
+} /* A fallback for browsers not supporting the nested CSS */
 
 #main .axes {
   position: relative;
@@ -20,7 +23,7 @@
   position: relative;
   width: 100%; height: 2px;
   top: 20px;
-  border-top: 2px solid grey;
+  border-top: 2px solid var(--axes-clr-hex);
 }
 
 /* JS is used to position the ticks at fixed intervals */
@@ -29,13 +32,18 @@
   transform: translate(-30%, -60%);
   width: 5px; height: 5px;
   border-radius: 50%;
-  background: grey;
+  background: var(--axes-clr-hex);
 }
 #main .axes .x-axis .x-ticks::before {
   content: var(--tick-text);
   position: absolute;
   translate: 8px -20px;
-  color: var(--tick-text-color);
+
+  color: var(--tick-clr-1-hex);
+} #main .axes .x-axis .x-ticks.green::before {
+  color: var(--tick-clr-3-hex);
+} #main .axes .x-axis .x-ticks.yellow::before {
+  color: var(--tick-clr-2-hex);
 }
 
 #main .axes .x-axis .x-ticks.half-tick {
@@ -50,7 +58,7 @@
   position: absolute;
   left: 1.75%;
   width: 2px; min-height: calc(100% - 2px);
-  border-left: 2px solid grey;
+  border-left: 2px solid var(--axes-clr-hex);
 }
 /* That -2px in height is for solving the scroll issue on the initial board, now it doesn't have a scroll, 
 I presume it was because of border-left being 2px and y-axis being a copied rotated x-axis */
@@ -66,12 +74,12 @@ I presume it was because of border-left being 2px and y-axis being a copied rota
   margin-top: 25px;
   margin-bottom: 50px;
   width: 48.25%; height: 40px;              /* left(1.75%, of the x-plane as a whole) */
-  background: pink;
+  background: var(--accent-clr-2-hex);
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   border-left: 2px solid grey;
   transition: width 0.5s, background-color 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
-  box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgb(var(--abs-blk-rgb), 0.2);
 }
 
 #main #bar-plane .bar::before {
