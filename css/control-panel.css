@@ -35,7 +35,8 @@
   scale: 0.90;
 }
 
-#controlpanel button svg {
+#controlpanel button svg,
+#controlpanel a svg {
   position: absolute;
   top: 25%; left: 10%;
   scale: 2;
@@ -45,8 +46,9 @@
   position: absolute;
   top: 50%; left: 33%;
   min-width: 66%;
-
   translate: 0% -50%;
+  
+  text-align: center;
 }
 
 #controlpanel #load-bars-file {

@@ -3,7 +3,7 @@
   width: 325px; height: 40px;
   
   background-color: rgba(var(--bg-clr-rgb), 0.5);
-  box-shadow: 0 2px 5px 0px rgb(var(--bg-clr-rgb), 0.35);
+  box-shadow: 0 2px 5px 0px rgb(var(--abs-blk-rgb), 0.35);
   border: 2px solid var(--bg-clr-hex);
   border-top: none;
   border-radius: 0 0 10px 10px;
@@ -13,7 +13,7 @@
 
 #bar-title-div:hover {
   background: var(--bg-clr-hex);
-  box-shadow: 0 2px 5px 0px rgb(var(--bg-clr-rgb), 0.45);
+  box-shadow: 0 2px 5px 0px rgb(var(--abs-blk-rgb), 0.45);
 }
 
 #bar-title-div::before {
