@@ -1,6 +1,6 @@
 import { DOM_ELEMENTS } from "./dom.js";
 
-export function saveBars(e) {
+export function saveBars() {
   const title = document.getElementById('bar-title').textContent;
 
   const obj = { 
@@ -20,6 +20,7 @@ export function saveBars(e) {
   }
   
   const data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-  e.target.href = 'data:' + data;
-  e.target.download = 'paralleux-save.json';
+  // direct reference is needed because the anchor now has children elements that trigger the event and the event object's target changes
+  DOM_ELEMENTS.saveBarsBtn.href = 'data:' + data;
+  DOM_ELEMENTS.saveBarsBtn.download = 'paralleux-save.json';
 }
