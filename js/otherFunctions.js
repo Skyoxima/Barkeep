@@ -55,6 +55,6 @@ export function resetFields(elements, targets, defaultVals) {
   }
 }
 
-export function blockerClick() {
-  DOM_ELEMENTS.blockerDiv.style.display = 'none';
-}
+// export function blockerClick() {
+//   DOM_ELEMENTS.blockerDiv.style.display = 'none';
+// }

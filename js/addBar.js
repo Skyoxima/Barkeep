@@ -2,22 +2,21 @@ import { yAxisBarIndxAndVal } from './paralleux.js'
 import { DOM_ELEMENTS } from './dom.js';
 import { ADD_BAR_RESETS, BASE_BAR_ANIM_OPTS, BASE_BAR_ANIM_STR, INVALID_PATTERN } from './constants.js';
 import { barAnimator, resetFields } from './otherFunctions.js';
-
+console.log(DOM_ELEMENTS.addBarModal)
 const addBarVal = document.getElementById("new-bar-val"),
       blockerDiv = document.querySelector('.blocker'),
-      addBarPopUp = document.querySelector('.add-bar-pu'),
+      // addBarPopUp = document.querySelector('.add-bar-pu'),
       addBarLbl = document.getElementById("new-bar-label"),
       addBarCol = document.getElementById("bar-color-picker"),
-      popUpSubmitBtn = document.getElementById("pop-up-submit"),
-      popUpCancelBtn = document.getElementById("pop-up-cancel");
+      popUpSubmitBtn = document.getElementById("modal-submit"),
+      popUpCancelBtn = document.getElementById("modal-cancel");
 
 export function handleAddBar() {
   // Cleanup the screen first
   DOM_ELEMENTS.editBarModal.classList.remove("active-modal");
 
   // make the pop-up (modal) visible
-  addBarPopUp.style.display = 'block';
-  blockerDiv.style.display = 'block';
+  DOM_ELEMENTS.addBarModal.showModal()
 
   // if cancel was previously clicked before "value" was cleared.
   if (addBarVal.value !== "") {
@@ -52,10 +51,11 @@ function handleAddBarPopUp() {
   barAnimator(DOM_ELEMENTS.barPlane.lastElementChild, [BASE_BAR_ANIM_STR, {width: `${barWidth}px`, opacity: 1}], BASE_BAR_ANIM_OPTS)
   yAxisBarIndxAndVal();
   resetFields(
-    [addBarVal, addBarLbl, addBarCol, blockerDiv, addBarPopUp],
+    [addBarVal, addBarLbl, addBarCol],
     ADD_BAR_RESETS.targets,
     ADD_BAR_RESETS.defaultVals
   );
+  DOM_ELEMENTS.addBarModal.close();
 }
 
 
@@ -75,7 +75,8 @@ popUpSubmitBtn.addEventListener("click", function () {
 });
 
 popUpCancelBtn.addEventListener("click", function () {
-  addBarPopUp.style.display = 'none';
-  blockerDiv.style.display = 'none';
+  // addBarPopUp.style.display = 'none';
+  DOM_ELEMENTS.addBarModal.close()
+  // blockerDiv.style.display = 'none';
 });
 

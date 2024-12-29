@@ -161,32 +161,30 @@
       </div>
     </section>
 
-    <div class="blocker">
-      <div class="pop-up add-bar-pu">
-        <p class="header">Add a Bar</p>
-        <div class="pop-up-txt-input">
-          <label for="new-bar-label">Bar Label:</label
-          ><input type="text" name="sf" id="new-bar-label" />
-        </div>
-        <div class="pop-up-sub-div">
-          <div class="pop-up-txt-input">
-            <label for="new-bar-val">Value:</label
-            ><input type="text" name="val" id="new-bar-val" />
-          </div>
-          <div class="add-bar-color">
-            <label for="bar-color-picker">Pick Color:</label
-            ><input
-              type="color"
-              value="#ffc0cb"
-              name="barcolor"
-              id="bar-color-picker"
-            />
-          </div>
-        </div>
-        <button id="pop-up-submit" disabled>Add!</button>
-        <button id="pop-up-cancel">Cancel</button>
+    <dialog class="modal" id="add-bar-pu">
+      <p class="header">Add a Bar</p>
+      <div class="modal-txt-input">
+        <label for="new-bar-label">Bar Label:</label
+        ><input type="text" name="sf" id="new-bar-label" />
       </div>
-    </div>
+      <div class="modal-sub-div">
+        <div class="modal-txt-input">
+          <label for="new-bar-val">Value:</label
+          ><input type="text" name="val" id="new-bar-val" />
+        </div>
+        <div class="add-bar-color">
+          <label for="bar-color-picker">Pick Color:</label
+          ><input
+            type="color"
+            value="#ffc0cb"
+            name="barcolor"
+            id="bar-color-picker"
+          />
+        </div>
+      </div>
+      <button id="modal-submit" disabled>Add!</button>
+      <button id="modal-cancel">Cancel</button>
+    </dialog>
 
     <div id="edit-bar-modal">
       <p id="edit-header">Edit Bar</p>

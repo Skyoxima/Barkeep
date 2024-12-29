@@ -10,15 +10,11 @@ export const ADD_BAR_RESETS = {
     "value",
     "value",
     "value",
-    "display",
-    "display"
   ],
   defaultVals: [
     "",
     "",
     BASE_COLOR,
-    "none",
-    "none"
   ]
 }
 
