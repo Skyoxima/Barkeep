@@ -1,27 +1,30 @@
 #main {
-  position: relative;
-  width: 60%; 
+  /* position: relative; */
+  width: 60%;
   height: 700px;
 
   overflow: hidden;
   overflow-y: scroll;
-  z-index: 1;
+
   /*~ Native Nesting! */
   &::-webkit-scrollbar {
     display: none;
   }
-} #main::-webkit-scrollbar {
+}
+#main::-webkit-scrollbar {
   display: none;
 } /* A fallback for browsers not supporting the nested CSS */
 
 #main .axes {
   position: relative;
-  width: 100%; min-height: 100%;
+  width: 100%;
+  min-height: 100%;
 }
 
 #main .axes .x-axis {
   position: relative;
-  width: 100%; height: 2px;
+  width: 100%;
+  height: 2px;
   top: 20px;
   border-top: 2px solid var(--axes-clr-hex);
 }
@@ -30,7 +33,8 @@
 #main .axes .x-axis .x-ticks {
   position: absolute;
   transform: translate(-30%, -60%);
-  width: 5px; height: 5px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--axes-clr-hex);
 }
@@ -40,14 +44,17 @@
   translate: 8px -20px;
 
   color: var(--tick-clr-1-hex);
-} #main .axes .x-axis .x-ticks.green::before {
+}
+#main .axes .x-axis .x-ticks.green::before {
   color: var(--tick-clr-3-hex);
-} #main .axes .x-axis .x-ticks.yellow::before {
+}
+#main .axes .x-axis .x-ticks.yellow::before {
   color: var(--tick-clr-2-hex);
 }
 
 #main .axes .x-axis .x-ticks.half-tick {
-  width: 2px; height: 10px;
+  width: 2px;
+  height: 10px;
   border-radius: 0;
 }
 #main .axes .x-axis .x-ticks.half-tick::before {
@@ -57,7 +64,8 @@
 #main .axes .y-axis {
   position: absolute;
   left: 1.75%;
-  width: 2px; min-height: calc(100% - 2px);
+  width: 2px;
+  min-height: calc(100% - 2px);
   border-left: 2px solid var(--axes-clr-hex);
 }
 /* That -2px in height is for solving the scroll issue on the initial board, now it doesn't have a scroll, 
@@ -65,20 +73,24 @@ I presume it was because of border-left being 2px and y-axis being a copied rota
 
 #main #bar-plane {
   position: relative;
-  width: 98.25%; height: 100%;
-  top: 20px; left: 1.75%;
+  width: 98.25%;
+  height: 100%;
+  top: 20px;
+  left: 1.75%;
 }
 
 #main #bar-plane .bar {
   position: relative;
   margin-top: 25px;
   margin-bottom: 50px;
-  width: 48.25%; height: 40px;              /* left(1.75%, of the x-plane as a whole) */
+  width: 48.25%;
+  height: 40px; /* left(1.75%, of the x-plane as a whole) */
   background: var(--accent-clr-2-hex);
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   border-left: 2px solid grey;
-  transition: width 0.5s, background-color 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+  transition: width 0.5s,
+    background-color 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   box-shadow: 0 2px 2px 0 rgb(var(--abs-blk-rgb), 0.2);
 }
 
@@ -86,20 +98,25 @@ I presume it was because of border-left being 2px and y-axis being a copied rota
   content: attr(bar-number);
   position: absolute;
   width: 20px;
-  left: var(--bar-index-left); top: 18%;
-  display: flex; justify-content: center; align-items: center;
+  left: var(--bar-index-left);
+  top: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #main #bar-plane .bar::after {
   content: var(--stands-for-text);
   position: absolute;
-  left: 8px; top: 100%;
+  left: 8px;
+  top: 100%;
   font-style: italic;
   color: var(--stands-for-color);
 }
 
 #main #bar-plane .bar span {
   position: absolute;
-  top: 50%; right: -1rem;
+  top: 50%;
+  right: -1rem;
   translate: 0 -50%;
 }

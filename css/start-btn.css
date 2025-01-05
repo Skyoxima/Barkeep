@@ -1,0 +1,99 @@
+#start-btn {
+  margin-top: 2em;
+  position: relative;
+  padding: 15px 45px;
+
+  background-color: rgb(var(--landing-btn-rgb));
+
+  color: var(--primary-font-hex);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+#start-btn span {
+  position: relative;
+  /* z-index: 1; */
+  margin-right: -10px;
+}
+
+#start-btn:hover {
+  letter-spacing: 20px;
+  color: var(--clr);
+  background: linear-gradient(
+    45deg,
+    var(--accent-clr-1-hex),
+    var(--accent-clr-2-hex)
+  );
+  box-shadow: 0 0 1em var(--clr);
+}
+
+#start-btn:hover span {
+  margin-right: -20px;
+}
+
+#start-btn::before {
+  content: "";
+  position: absolute;
+  background-color: var(--landing-bg-hex);
+  inset: 2px;
+  pointer-events: none;
+}
+
+#start-btn i {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#start-btn i::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 100%;
+  width: 20px;
+  height: 20px;
+
+  transform: translateX(-50%);
+
+  background-color: var(--landing-btn-hex);
+  border: 2px solid var(--clr);
+
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+#start-btn:hover i::before {
+  left: 0%;
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: 37px 37px var(--clr);
+}
+
+#start-btn i::after {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 0%;
+  width: 20px;
+  height: 20px;
+
+  transform: translateX(-50%);
+
+  background-color: rgb(35, 35, 35);
+  border: 2px solid var(--clr);
+
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+#start-btn:hover i::after {
+  left: 100%;
+  transform: translateX(-50%) rotate(-45deg);
+  box-shadow: 37px -37px var(--clr);
+}
+
+#start-btn:active {
+  scale: 0.9;
+}

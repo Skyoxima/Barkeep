@@ -1,49 +1,60 @@
-#bar-title-div {
+#graph-title-div {
   position: relative;
-  width: 325px; height: 40px;
-  
+  width: 325px;
+  height: 40px;
+
   background-color: rgba(var(--bg-clr-rgb), 0.5);
   box-shadow: 0 2px 5px 0px rgb(var(--abs-blk-rgb), 0.35);
   border: 2px solid var(--bg-clr-hex);
   border-top: none;
   border-radius: 0 0 10px 10px;
-  z-index: 0;
-  transition: background .5s, box-shadow .5s;
+  /* z-index: 0; */
+  transition: background 0.5s, box-shadow 0.5s;
 }
 
-#bar-title-div:hover {
+#graph-title-div:hover {
   background: var(--bg-clr-hex);
   box-shadow: 0 2px 5px 0px rgb(var(--abs-blk-rgb), 0.45);
 }
 
-#bar-title-div::before {
-  content: '';
+#graph-title-div::before {
+  content: "";
   position: absolute;
-  left: -8.75px; top: 0;
-  width: 7px; height: 7px;
+  left: -8.75px;
+  top: 0;
+  width: 7px;
+  height: 7px;
   border-radius: 0 20px 0 0;
   box-shadow: 2px -2px 0 var(--bg-clr-hex);
   background: transparent;
 }
 
-#bar-title-div::after {
-  content: '';
+#graph-title-div::after {
+  content: "";
   position: absolute;
-  right: -8.75px; top: 0;
-  width: 7px; height: 7px;
+  right: -8.75px;
+  top: 0;
+  width: 7px;
+  height: 7px;
   border-radius: 20px 0 0 0;
   box-shadow: -2px -2px 0 var(--bg-clr-hex);
   background: transparent;
 }
 
-#bar-title-div #bar-title {
+#graph-title-div #graph-title {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   outline: none;
+
+  transition-property: border-radius;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-#bar-title-div #bar-title:focus {
+#graph-title-div #graph-title:focus,
+#graph-title-div #graph-title:hover {
   padding: 1px 5px;
   border-bottom: 1px solid var(--abs-blk-hex);
   border-radius: 10px;

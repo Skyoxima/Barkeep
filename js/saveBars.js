@@ -1,7 +1,7 @@
 import { DOM_ELEMENTS } from "./dom.js";
 
 export function saveBars() {
-  const title = document.getElementById('bar-title').textContent;
+  const title = document.getElementById('graph-title').textContent;
 
   const obj = { 
     title: title,

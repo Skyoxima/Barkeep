@@ -2,10 +2,9 @@ import { yAxisBarIndxAndVal } from './paralleux.js'
 import { DOM_ELEMENTS } from './dom.js';
 import { ADD_BAR_RESETS, BASE_BAR_ANIM_OPTS, BASE_BAR_ANIM_STR, INVALID_PATTERN } from './constants.js';
 import { barAnimator, resetFields } from './otherFunctions.js';
-console.log(DOM_ELEMENTS.addBarModal)
+
 const addBarVal = document.getElementById("new-bar-val"),
       blockerDiv = document.querySelector('.blocker'),
-      // addBarPopUp = document.querySelector('.add-bar-pu'),
       addBarLbl = document.getElementById("new-bar-label"),
       addBarCol = document.getElementById("bar-color-picker"),
       popUpSubmitBtn = document.getElementById("modal-submit"),
@@ -75,8 +74,6 @@ popUpSubmitBtn.addEventListener("click", function () {
 });
 
 popUpCancelBtn.addEventListener("click", function () {
-  // addBarPopUp.style.display = 'none';
   DOM_ELEMENTS.addBarModal.close()
-  // blockerDiv.style.display = 'none';
 });
 

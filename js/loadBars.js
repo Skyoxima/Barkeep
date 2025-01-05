@@ -14,6 +14,6 @@ export async function loadBars() {
     barAnimator(DOM_ELEMENTS.barPlane.lastElementChild, [BASE_BAR_ANIM_STR, {width: `${barWidth}px`, opacity: 1}], BASE_BAR_ANIM_OPTS)
     yAxisBarIndxAndVal();
   }
-  document.getElementById("bar-title").innerHTML = loadedData.title;
+  document.getElementById("graph-title").innerHTML = loadedData.title;
   DOM_ELEMENTS.loadBarsFile.value = null
 }
