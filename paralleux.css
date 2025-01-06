@@ -1,5 +1,5 @@
 @import url('./css/landing.css');
-@import url('./css/bg-circles.css');
+@import url('./css/bg-squares.css');
 @import url('./css/main-container.css');
 @import url('./css/title.css');
 @import url('./css/control-panel.css');
@@ -70,7 +70,7 @@ body {
 }
 
 #landing-section {
-  /* position: relative; */
+  position: relative;
   width: 100%;
   height: 100vh;
   background: var(--landing-bg-hex);
