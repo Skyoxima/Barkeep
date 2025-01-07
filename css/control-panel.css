@@ -18,6 +18,10 @@
   
   transition: scale .5s, box-shadow .5s;
   cursor: pointer;
+
+  &:disabled {
+    filter: grayscale(100%);
+  }
 }
 
 #controlpanel a {
